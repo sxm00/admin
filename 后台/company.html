@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公司信息</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+
+</head>
+<body>
+
+<!--<table class="layui-table" lay-size="sm">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+        <col>
+    </colgroup>
+    <thead>
+        <tr>
+            <th>序号</th>
+            <th>公司名称</th>
+            <th>公司地址</th>
+            <th>联系方式</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+    </tbody>
+</table>-->
+<!--数据表格-->
+<table class="layui-table">
+    <thead>
+    <tr>
+        <th lay-data="{field:'username', width:80}" rowspan="2">联系人</th>
+        <th lay-data="{field:'amount', width:120}" rowspan="2">金额</th>
+        <th lay-data="{align:'center'}" colspan="3">地址</th>
+    </tr>
+    <tr>
+        <th lay-data="{field:'province', width:80}">省</th>
+        <th lay-data="{field:'city', width:120}">市</th>
+        <th lay-data="{field:'county', width:300}">详细</th>
+    </tr>
+    </thead>
+</table>
+<script src="layui/layui.js"></script>
+<script>
+    ;!function(){
+        //无需再执行layui.use()方法加载模块，直接使用即可
+        var form = layui.form
+            ,layer = layui.layer;
+
+        //…
+    }();
+
+</script>
+</body>
+</html>

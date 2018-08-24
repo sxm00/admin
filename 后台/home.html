@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>后台登录</title>
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-2.1.4.js"></script>
 </head>
 <body>
 <div class="header">
@@ -36,16 +37,16 @@
       </div>
         <ul class="login">
             <li class="Ruser">
-                <input type="text" placeholder="请输入用户名" class="Ruser_inpt1">
+                <input type="text" placeholder="请输入用户名" class="Ruser_inpt1" value="" id="loginCode">
             </li>
             <li class="Ruser1">
-                <input type="password" placeholder="请输入密码" class="Ruser_inpt1">
+                <input type="password" placeholder="请输入密码" class="Ruser_inpt1" value="" id="password">
             </li>
             <li class="Ruser2">
                 <input type="text" placeholder="请输入验证码" class="Ruser_inpt0">
             </li>
             <li class="Ruser0">
-                <span>登录</span>
+                <span id="loginBtn">登录</span>
             </li>
         </ul>
          <div class="modifine">
@@ -59,5 +60,41 @@
 <footer>
     <p>© Copyright 2016 - 2017 中科益盛 版权所有 www.casup.cn</p>
 </footer>
+<script type="text/javascript">
+$("#loginBtn").click(function () {
+    var user=new Object();
+    user.loginCode=$.trim($("#loginCode").val());
+    user.password=$.trim($("#password").val());
+    if (user.loginCode=="" || user.loginCode == null){
+        alert("用户名不能为空")
+    }else if (user.password == "" || user.password == null){
+        alert("密码不能为空")
+    }else {
+        $.ajax({
+            type:'POST',
+            url:'http://www.wmmwork.club/admin/login/login',
+            cache: false,
+            data:{
+               username:$("#loginCode").val(),
+                password:$("#password").val()
+            },
+            dataType:"json",
+            error:function (result) {
+                alert(result.data);
+            },
+            success:function (result) {
+                if(result.status){
+                    window.location.href = 'index.html';
+                }else{
+                    console.log(result.data);
+                    console.log($("#loginCode").val())
+                    console.log($("#password").val())
+                }
+            }
+        })
+    }
+})
+
+</script>
 </body>
 </html>
